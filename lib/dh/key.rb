@@ -19,7 +19,6 @@ class Key
   end
 
   def shared_key(guest_public_key)
-    #TODO: generado hasta que se 'conecten'
     # privada de alice ** publica de bob.
     @shared = ((guest_public_key ** @private) % @p)
   end

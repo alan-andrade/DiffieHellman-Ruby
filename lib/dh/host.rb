@@ -3,7 +3,6 @@ class Host
   def initialize(name='alice',p,g)
     @name = name
     @key  = Key.new(p,g)
-    @nodes  = []
   end
   
   def connect_to_network(network)

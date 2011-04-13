@@ -1,6 +1,4 @@
-['key.rb', 'host.rb', 'primitive_root.rb', 'net.rb'].each do |file|
-  require "./" + file
-end
+require './lib/dh.rb'
 
 p = 19
 g = primitive_root(p)
