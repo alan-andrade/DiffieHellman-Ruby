@@ -6,7 +6,7 @@ module DH
       @g  =  g
       @private = nil
       @public  = nil
-      @shared  =  nil
+      @shared  = nil
     end
     
     def generate_secret_key
