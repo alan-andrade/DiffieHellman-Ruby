@@ -37,4 +37,11 @@ class Net
       puts "\n\n El nodo al que quieres enviar informacion no esta conectado a esta red \n\n"
     end
   end
+  
+  def receive(host,msg)
+    msg = DH::Message.new(msg)
+    puts "#{host.name} recibio: #{msg.plaintext}"
+    msg.decypher(host.key.shared)
+    puts "\n#{host.name} descifro: #{msg.plaintext}\n"
+  end
 end

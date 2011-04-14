@@ -15,10 +15,7 @@ class Host
   end
   
   def receive(msg)
-    msg = DH::Message.new(msg)
-    puts "#{self.name} recibio: #{msg.plaintext}"
-    msg.decypher(self.key.shared)
-    puts "\n#{self.name} descifro: #{msg.plaintext}\n"
+    @network.receive(self,msg)
   end
 
 end
