@@ -7,6 +7,7 @@ class Net
   def add(host)    
     @nodes[host.name.to_sym] = host
     host.connect_to_network(self)
+    puts "Conectado a la red: #{host.name}"
   end
   
   def find_host(host)
@@ -29,8 +30,7 @@ class Net
       puts "\n#{host.name} envio: #{msg} \n\n"
       if trudy
         # hacer un ataque.
-        puts "trudy esta conectado"
-        
+        msg = trudy.attack(msg)
       end
       receiver.receive(msg)
     else
@@ -44,4 +44,5 @@ class Net
     msg.decypher(host.key.shared)
     puts "\n#{host.name} descifro: #{msg.plaintext}\n"
   end
+
 end

@@ -17,5 +17,11 @@ class Host
   def receive(msg)
     @network.receive(self,msg)
   end
+  
+  ## Trudy ataca e intenta inyectar codigo
+  def attack(msg)
+    puts "\n\ntrudy esta conectado y va atacar!\n\n"    
+    msg   +=  "MensajeTocado!"
+  end
 
 end
