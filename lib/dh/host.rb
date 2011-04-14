@@ -1,18 +1,26 @@
 class Host
-  attr_reader :key, :name
-  def initialize(name='alice',p,g)
+  attr_reader :name
+  attr_accessor :key
+  def initialize(name='alice')
     @name = name
-    @key  = Key.new(p,g)
+    @key  = nil
+    @connections  = {}
   end
   
   def connect_to_network(network)
     @network  = network
   end
   
-  def send(host,msg)
-    @connection ||= connect_with_host(host)
-    receiver  = @network.find_host(host)
-    receiver.receive(msg)
+  def send(guest,msg)
+    
+    # Existe el nodo al que se quiere enviar el msg?        
+    receiver = @network.find_host(guest)
+    
+    if receiver
+      #Do the Handshake
+      DH::Handshake.new(self,receiver)
+      receiver.receive(msg)
+    end
   end
   
   def receive(msg)

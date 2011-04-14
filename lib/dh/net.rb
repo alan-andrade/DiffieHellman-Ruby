@@ -4,9 +4,8 @@ class Net
     @nodes  = {}
   end
   
-  def add(host)
-    name_of_host  = host.name
-    @nodes[name_of_host.to_sym] = host
+  def add(host)    
+    @nodes[host.name.to_sym] = host
     host.connect_to_network(self)
   end
   
