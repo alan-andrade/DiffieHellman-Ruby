@@ -4,7 +4,6 @@ class Host
   def initialize(name='alice')
     @name = name
     @key  = nil
-    @connections  = {}
   end
   
   def connect_to_network(network)
@@ -24,11 +23,12 @@ class Host
   end
   
   def receive(msg)
-    p "I: #{self.name}, received: #{msg}"
+    p "#{self.name} received: #{msg}"
   end
-  
-  def connect_with_host(host)
-    self.key.shared_key(host.key.public)
-    host.key.shared_key(self.key.public)
-  end
+
+#  Estos metodos se reemplazaron con DH::Handshake  
+#  def connect_with_host(host)
+#    self.key.shared_key(host.key.public)
+#    host.key.shared_key(self.key.public)
+#  end
 end
