@@ -18,17 +18,17 @@ class Host
     if receiver
       #Do the Handshake
       DH::Handshake.new(self,receiver)
+      msg = DH::Message.new(msg)
+      msg = msg.cipher(self.key.shared)
+      p "#{self.name} sent: #{msg}"
       receiver.receive(msg)
     end
   end
   
   def receive(msg)
-    p "#{self.name} received: #{msg}"
+    msg = DH::Message.new(msg)
+    msg.decypher(self.key.shared)
+    p "#{self.name} received: #{msg.plaintext}"
   end
 
-#  Estos metodos se reemplazaron con DH::Handshake  
-#  def connect_with_host(host)
-#    self.key.shared_key(host.key.public)
-#    host.key.shared_key(self.key.public)
-#  end
 end

@@ -1,6 +1,6 @@
 module DH
   class Key
-    attr_reader :public
+    attr_reader :public, :shared
     def initialize(p,g)
       @p  =  p
       @g  =  g
